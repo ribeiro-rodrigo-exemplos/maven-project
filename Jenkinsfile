@@ -23,12 +23,12 @@ pipeline{
             parallel{
                 stage('Deploy to Staging'){
                     steps{
-                        sh "scp **/target/*.war rodrigo@${tomcat_dev}:/home/rodrigo/apache-tomcat-8.0.27/webapps"
+                        sh "scp **/target/*.war rodrigo@${params.tomcat_dev}:/home/rodrigo/apache-tomcat-8.0.27/webapps"
                     }
                 }
                 stage('Deploy to Production'){
                     steps{
-                        sh "scp **/target/*.war rodrigo@${tomcat_prod}:/home/rodrigo/apache-tomcat-8.0.27-production/webapps"
+                        sh "scp **/target/*.war rodrigo@${params.tomcat_prod}:/home/rodrigo/apache-tomcat-8.0.27-production/webapps"
                     }
                 }
             }
